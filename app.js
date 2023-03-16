@@ -95,6 +95,15 @@ function cadastrarDespesa() {
 
 function carregaListaDespesas()  {
   let despesas = Array()
-  bd.recuperarTodosRegistros()
-  
+  despesas = bd.recuperarTodosRegistros()
+
+
+  let listaDespesas = document.getElementById("listaDespesas")
+  despesas.forEach(function(d) {
+   var linha = listaDespesas.insertRow();
+   linha.insertCell(0).innerHTML = `${ d.dia}/${d.mes}/${d.ano}`
+   linha.insertCell(1).innerHTML = d.tipo
+   linha.insertCell(2).innerHTML = d.descricao
+   linha.insertCell(3).innerHTML = d.valor
+  })
 }
